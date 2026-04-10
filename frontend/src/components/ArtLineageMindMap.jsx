@@ -1,6 +1,12 @@
 import { useMemo, useState } from "react";
 import data from "../data/lineageMindMap.json";
 
+const BRANCH = {
+  dance: "#E91E63",
+  music: "#1E88E5",
+  theory: "#43A047",
+};
+
 export default function ArtLineageMindMap({ theme }) {
   const [active, setActive] = useState(null);
 
@@ -13,168 +19,135 @@ export default function ArtLineageMindMap({ theme }) {
     return null;
   }, [active]);
 
+  const leftNodes = data.pillars.find((p) => p.id === "dance")?.nodes || [];
+  const rightTop = data.pillars.find((p) => p.id === "music")?.nodes || [];
+  const rightBottom = data.pillars.find((p) => p.id === "theory")?.nodes || [];
+
   return (
-    <div style={{ width: "100%", maxWidth: "1100px", margin: "0 auto" }}>
+    <div style={{ width: "100%", maxWidth: "1200px", margin: "0 auto" }}>
       <div
         style={{
-          position: "relative",
-          marginBottom: "28px",
-          padding: "20px 24px",
-          borderRadius: "20px",
-          background: `linear-gradient(135deg, ${theme.bg}, #fff)`,
-          border: `1.5px solid ${theme.color}28`,
-          textAlign: "center",
+          borderRadius: "24px",
+          border: `1.5px solid ${theme.color}25`,
+          background: "linear-gradient(145deg, #fff, #fffaf6)",
+          boxShadow: "0 8px 26px rgba(0,0,0,0.06)",
+          padding: "18px",
+          overflowX: "auto",
         }}
       >
-        <div
-          style={{
-            display: "inline-block",
-            padding: "12px 28px",
-            borderRadius: "999px",
-            background: "#fff",
-            border: `2px solid ${theme.color}`,
-            boxShadow: `0 8px 28px ${theme.color}25`,
-            fontFamily: "'Playfair Display', serif",
-            fontSize: "clamp(17px, 2.5vw, 22px)",
-            fontWeight: 700,
-            color: theme.color,
-          }}
-        >
-          Indian classical arts
-        </div>
-        <p style={{ margin: "14px 0 0", fontSize: "13px", color: "#8B6452", maxWidth: "520px", marginLeft: "auto", marginRight: "auto" }}>
-          Tap any node to read a short lineage note — a compact map of dance, music, and śāstra connections.
-        </p>
-      </div>
+        <div style={{ minWidth: "1020px", position: "relative", height: "640px" }}>
+          <svg width="1020" height="640" viewBox="0 0 1020 640" style={{ position: "absolute", inset: 0 }}>
+            <path d="M500 320 C390 255, 300 205, 180 170" stroke={BRANCH.dance} strokeWidth="8" fill="none" strokeLinecap="round" />
+            <path d="M500 320 C390 290, 300 285, 170 300" stroke={BRANCH.dance} strokeWidth="8" fill="none" strokeLinecap="round" />
+            <path d="M500 320 C390 350, 300 385, 185 455" stroke={BRANCH.dance} strokeWidth="8" fill="none" strokeLinecap="round" />
 
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
-          gap: "20px",
-          alignItems: "start",
-        }}
-      >
-        {data.pillars.map((pillar) => (
-          <div
-            key={pillar.id}
-            style={{
-              background: "#fff",
-              borderRadius: "20px",
-              padding: "20px 18px 22px",
-              border: `1.5px solid ${theme.color}22`,
-              boxShadow: "0 6px 24px rgba(0,0,0,0.04)",
-              position: "relative",
-            }}
-          >
-            <div
-              style={{
-                width: "44px",
-                height: "3px",
-                borderRadius: "2px",
-                background: theme.gradient,
-                marginBottom: "12px",
-              }}
-            />
-            <h2
-              style={{
-                fontFamily: "'Playfair Display', serif",
-                fontSize: "20px",
-                fontWeight: 700,
-                color: theme.color,
-                marginBottom: "4px",
-              }}
-            >
-              {pillar.title}
-            </h2>
-            <p style={{ fontSize: "12px", color: "#8B6452", marginBottom: "16px" }}>{pillar.subtitle}</p>
+            <path d="M520 320 C640 245, 740 200, 855 170" stroke={BRANCH.music} strokeWidth="8" fill="none" strokeLinecap="round" />
+            <path d="M520 320 C640 275, 740 280, 860 305" stroke={BRANCH.music} strokeWidth="8" fill="none" strokeLinecap="round" />
 
-            <div
-              style={{
-                borderLeft: `3px solid ${theme.color}45`,
-                paddingLeft: "14px",
-                marginLeft: "6px",
-                display: "flex",
-                flexDirection: "column",
-                gap: "8px",
-              }}
-            >
-              {pillar.nodes.map((n) => {
-                const on = active === n.id;
-                return (
-                  <button
-                    key={n.id}
-                    type="button"
-                    onClick={() => setActive(on ? null : n.id)}
-                    style={{
-                      textAlign: "left",
-                      padding: "10px 12px",
-                      borderRadius: "12px",
-                      border: on ? `1.5px solid ${theme.color}` : `1px solid ${theme.color}25`,
-                      background: on ? theme.bg : "rgba(0,0,0,0.02)",
-                      cursor: "pointer",
-                      fontFamily: "'DM Sans', sans-serif",
-                      fontSize: "14px",
-                      fontWeight: on ? 600 : 500,
-                      color: on ? theme.color : "#5D3A1A",
-                      transition: "border-color 0.2s, background 0.2s",
-                    }}
-                  >
-                    {n.label}
-                  </button>
-                );
-              })}
-            </div>
+            <path d="M520 320 C640 355, 750 390, 860 460" stroke={BRANCH.theory} strokeWidth="8" fill="none" strokeLinecap="round" />
+            <path d="M520 320 C620 395, 700 465, 780 535" stroke={BRANCH.theory} strokeWidth="8" fill="none" strokeLinecap="round" />
+          </svg>
+
+          <div style={centerStyle(theme)}>
+            <div style={{ fontSize: "12px", letterSpacing: "0.08em", textTransform: "uppercase", opacity: 0.7 }}>NrityaNaad</div>
+            <div style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: "22px" }}>Mind Map</div>
+            <div style={{ fontSize: "13px", marginTop: "2px" }}>Indian classical art lineages</div>
           </div>
-        ))}
+
+          <div style={{ position: "absolute", left: "78px", top: "150px" }}>
+            <BranchTitle text="Classical Dance" color={BRANCH.dance} />
+            <NodeStack nodes={leftNodes} active={active} setActive={setActive} color={BRANCH.dance} />
+          </div>
+
+          <div style={{ position: "absolute", right: "58px", top: "135px" }}>
+            <BranchTitle text="Classical Music" color={BRANCH.music} />
+            <NodeStack nodes={rightTop} active={active} setActive={setActive} color={BRANCH.music} />
+          </div>
+
+          <div style={{ position: "absolute", right: "72px", top: "410px" }}>
+            <BranchTitle text="Texts & Pedagogy" color={BRANCH.theory} />
+            <NodeStack nodes={rightBottom} active={active} setActive={setActive} color={BRANCH.theory} />
+          </div>
+        </div>
       </div>
 
       {detail && (
         <div
           style={{
-            marginTop: "24px",
-            padding: "22px 24px",
-            borderRadius: "18px",
+            marginTop: "18px",
             background: "#fff",
+            borderRadius: "16px",
             border: `1.5px solid ${theme.color}30`,
-            animation: "fadeIn 0.25s ease",
+            padding: "16px 18px",
           }}
         >
-          <div style={{ fontSize: "12px", textTransform: "uppercase", letterSpacing: "0.06em", color: "#8B6452", marginBottom: "6px" }}>
-            {detail.pillar.title}
-          </div>
-          <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: "22px", color: theme.color, marginBottom: "10px" }}>
+          <div style={{ fontSize: "12px", color: "#8B6452", textTransform: "uppercase", letterSpacing: "0.06em" }}>{detail.pillar.title}</div>
+          <div style={{ marginTop: "4px", fontFamily: "'Playfair Display', serif", color: theme.color, fontSize: "22px", fontWeight: 700 }}>
             {detail.node.label}
-          </h3>
-          <p style={{ fontSize: "15px", lineHeight: 1.65, color: "#5D3A1A", fontWeight: 300, margin: 0 }}>
-            {detail.node.hint}
-          </p>
-          <button
-            type="button"
-            onClick={() => setActive(null)}
-            style={{
-              marginTop: "16px",
-              padding: "8px 14px",
-              borderRadius: "10px",
-              border: `1px solid ${theme.color}40`,
-              background: "transparent",
-              color: theme.color,
-              fontSize: "13px",
-              cursor: "pointer",
-              fontWeight: 500,
-            }}
-          >
-            Close detail
-          </button>
+          </div>
+          <p style={{ margin: "8px 0 0", color: "#5D3A1A", fontSize: "14px", lineHeight: 1.6 }}>{detail.node.hint}</p>
         </div>
       )}
-
-      <style>{`
-        @keyframes fadeIn {
-          from { opacity: 0; transform: translateY(6px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-      `}</style>
     </div>
   );
+}
+
+function BranchTitle({ text, color }) {
+  return (
+    <div style={{ marginBottom: "8px", fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: "18px", color }}>
+      {text}
+    </div>
+  );
+}
+
+function NodeStack({ nodes, active, setActive, color }) {
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: "8px", width: "220px" }}>
+      {nodes.map((n) => {
+        const on = active === n.id;
+        return (
+          <button
+            key={n.id}
+            type="button"
+            onClick={() => setActive(on ? null : n.id)}
+            style={{
+              textAlign: "left",
+              borderRadius: "11px",
+              border: `1.5px solid ${on ? color : `${color}55`}`,
+              background: on ? `${color}18` : "#fff",
+              color: "#4B2A12",
+              fontFamily: "'DM Sans', sans-serif",
+              fontSize: "13px",
+              padding: "8px 10px",
+              cursor: "pointer",
+              fontWeight: on ? 600 : 500,
+            }}
+          >
+            {n.label}
+          </button>
+        );
+      })}
+    </div>
+  );
+}
+
+function centerStyle(theme) {
+  return {
+    position: "absolute",
+    left: "50%",
+    top: "50%",
+    transform: "translate(-50%, -50%)",
+    width: "260px",
+    height: "126px",
+    borderRadius: "14px",
+    background: "#FFF59D",
+    border: `2px solid ${theme.color}`,
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    color: "#3A2300",
+    textAlign: "center",
+    boxShadow: "0 10px 30px rgba(0,0,0,0.12)",
+  };
 }
