@@ -1,6 +1,11 @@
 import { useParams, Link } from "react-router-dom";
 import features from "../data/features.json";
 import Navbar from "../components/Navbar";
+import IndiaMap from "../features/IndiaMap";
+
+const FEATURE_COMPONENTS = {
+  map: IndiaMap,
+};
 import Academy from "../features/Academy";
 import UserStories from "../components/UserStories";
 
