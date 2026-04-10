@@ -25,6 +25,7 @@ const CARD_BLURBS = {
   academy: "Discover dance & music academies near you — search, filter by city, call or open maps.",
   chatbot: "AI cultural Q&A — add GROQ_API_KEY (free) or OpenAI/Gemini in backend/.env.",
   mindmap: "Visual map of Indian classical art lineages — dance, music, and śāstra.",
+  map: "Interactive lineage mind map — classical dance, music systems, texts & pedagogy.",
 };
 
 export default function FeatureCard({ feature }) {

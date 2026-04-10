@@ -31,7 +31,7 @@ export default function FeaturePage() {
   const feature = features.find((f) => f.id === id);
   const theme = FEATURE_THEMES[id] || FEATURE_THEMES.mudra;
   const contentMaxWidth =
-    id === "gallery" || id === "mindmap"
+    id === "gallery" || id === "mindmap" || id === "map"
       ? "1200px"
       : id === "academy" || id === "chatbot"
         ? "900px"
@@ -125,9 +125,9 @@ export default function FeaturePage() {
                 (free at console.groq.com) or <code style={{ fontSize: "13px", background: theme.bg, padding: "2px 6px", borderRadius: "6px" }}>OPENAI_API_KEY</code> /{" "}
                 <code style={{ fontSize: "13px", background: theme.bg, padding: "2px 6px", borderRadius: "6px" }}>GEMINI_API_KEY</code> in <code style={{ fontSize: "13px", background: theme.bg, padding: "2px 6px", borderRadius: "6px" }}>backend/.env</code> — restart the server after saving.
               </>
-            ) : id === "mindmap" ? (
+            ) : id === "mindmap" || id === "map" ? (
               <>
-                A <strong style={{ color: theme.color, fontWeight: 500 }}>visual map</strong> of classical dance forms, music systems, and foundational texts — tap nodes to explore lineage hints.
+                A <strong style={{ color: theme.color, fontWeight: 500 }}>visual mind map</strong> of Indian classical art lineages — dance (SNA forms), Hindustani &amp; Carnatic music, and key śāstras &amp; pedagogy. Tap any node for details.
               </>
             ) : (
               <>
@@ -151,7 +151,7 @@ export default function FeaturePage() {
           <div style={{ marginTop: "8px", width: "100%" }}>
             <CulturalChatbot theme={theme} />
           </div>
-        ) : id === "mindmap" ? (
+        ) : id === "mindmap" || id === "map" ? (
           <div style={{ marginTop: "8px", width: "100%" }}>
             <ArtLineageMindMap theme={theme} />
           </div>
