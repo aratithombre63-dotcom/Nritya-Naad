@@ -6,7 +6,7 @@
   { "id": "stories", "name": "User Stories" },
   { "id": "map", "name": "India Map" },
   { "id": "upload", "name": "Upload Performance" },
-  { "id": "raga", "name": "Raga Explorer" },
+  { "id": "danceform", "name": "Guess the dance form" },
   { "id": "quiz", "name": "Quiz" },
   { "id": "event", "name": "Event Listing" },
   { "id": "reels", "name": "Reels" },

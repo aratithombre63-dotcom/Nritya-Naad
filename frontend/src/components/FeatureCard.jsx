@@ -8,7 +8,7 @@ const CARD_THEMES = {
   stories:    { color: "#C2185B", bg: "rgba(194,24,91,0.08)", border: "rgba(194,24,91,0.2)", icon: "📖" },
   map:        { color: "#00897B", bg: "rgba(0,137,123,0.08)", border: "rgba(0,137,123,0.2)", icon: "🗺️" },
   upload:     { color: "#3949AB", bg: "rgba(57,73,171,0.08)", border: "rgba(57,73,171,0.2)", icon: "🎬" },
-  raga:       { color: "#FF6B00", bg: "rgba(255,107,0,0.08)", border: "rgba(255,107,0,0.2)", icon: "🎵" },
+  danceform:       { color: "#FF6B00", bg: "rgba(255,107,0,0.08)", border: "rgba(255,107,0,0.2)", icon: "🎵" },
   quiz:       { color: "#C2185B", bg: "rgba(194,24,91,0.08)", border: "rgba(194,24,91,0.2)", icon: "❓" },
   event:      { color: "#00897B", bg: "rgba(0,137,123,0.08)", border: "rgba(0,137,123,0.2)", icon: "📅" },
   reels:      { color: "#3949AB", bg: "rgba(57,73,171,0.08)", border: "rgba(57,73,171,0.2)", icon: "🎞️" },
@@ -17,6 +17,7 @@ const CARD_THEMES = {
   karaoke:    { color: "#00897B", bg: "rgba(0,137,123,0.08)", border: "rgba(0,137,123,0.2)", icon: "🎤" },
   visualizer: { color: "#3949AB", bg: "rgba(57,73,171,0.08)", border: "rgba(57,73,171,0.2)", icon: "🌊" },
   swaras:     { color: "#FF6B00", bg: "rgba(255,107,0,0.08)", border: "rgba(255,107,0,0.2)", icon: "🎶" },
+
 };
 
 export default function FeatureCard({ feature }) {

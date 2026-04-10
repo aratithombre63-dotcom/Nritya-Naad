@@ -146,7 +146,7 @@ export default function Home() {
           justifyContent: "center",
           maxWidth: "640px",
         }}>
-          {["Mudra Detection", "Raga Explorer", "Beat Visualizer", "Learn Swaras", "Dance Gallery", "Karaoke"].map((tag, i) => (
+          {["Mudra Detection", "Guess the dance form", "Beat Visualizer", "Learn Swaras", "Dance Gallery", "Karaoke"].map((tag, i) => (
             <span key={i} style={{
               padding: "6px 16px",
               borderRadius: "30px",
